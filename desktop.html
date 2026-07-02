@@ -156,6 +156,18 @@
   .planrow .pt{font-size:14px;color:var(--muted)} .planrow .pt b{color:var(--ink);font-weight:600}
   .startbtn{display:block;margin-top:16px;text-align:center;text-decoration:none;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#fff;background:linear-gradient(135deg,var(--go),#1a49b8);border-radius:14px;padding:16px;transition:transform .12s}
   .startbtn:active{transform:scale(.98)} .startbtn:hover{transform:translateY(-1px)}
+
+  /* age reality-check in the agreement */
+  .agecheck{margin-top:18px;border:1.5px solid color-mix(in srgb,var(--hot) 45%,var(--line));background:var(--hotsoft);border-radius:15px;padding:16px}
+  .acq{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15.5px;color:var(--ink);margin-bottom:9px}
+  .acinput{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;background:var(--card);color:var(--ink);font:inherit;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px}
+  .acinput:focus{outline:2px solid var(--hot);outline-offset:1px;border-color:var(--hot)}
+  .acinput.short{max-width:170px}
+  .aclaw{margin-top:14px;font-size:14px;color:var(--ink);line-height:1.5} .aclaw b{color:var(--hotink);font-weight:700}
+  [data-theme="dark"] .aclaw b{color:var(--hot)}
+  .acack{margin-top:9px;font-size:13.5px;color:var(--muted);line-height:1.5} .acack b{color:var(--ink);font-weight:700}
+  .acinit{margin-top:14px}
+  .acinit label{display:block;font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--faint);margin-bottom:5px}
 </style>
 </head>
 <body>
@@ -328,6 +340,14 @@
           </ul>
         </div>
       </div>
+      <div class="agecheck">
+        <div class="acq">Point blank, Phoenix — how old are you right now?</div>
+        <input id="sigAge" class="acinput" type="text" inputmode="numeric" placeholder="Write your age here" autocomplete="off">
+        <div class="aclaw">And to legally ride an electric scooter on a public road or path in BC, how old do you have to be? <b>You have to be 16.</b></div>
+        <div class="acack">So I understand: <b>I'm 13 — the law says 16.</b> Until I'm 16, I ride on <b>private property only</b>. No public roads, no paths, no "just this once."</div>
+        <div class="acinit"><label>Initial here that you understand this</label><input id="sigInitials" class="acinput short" type="text" placeholder="Your initials" autocomplete="off"></div>
+      </div>
+
       <div class="sign">
         <div class="sf"><label>Phoenix</label><input id="sigPhoenix" type="text" placeholder="Sign here" autocomplete="off"></div>
         <div class="sf"><label>Dad</label><input id="sigDad" type="text" placeholder="Sign here" autocomplete="off"></div>
@@ -393,7 +413,7 @@
         refresh();
       });
     });
-    ['sigPhoenix','sigDad','sigDate'].forEach(function(id){
+    ['sigPhoenix','sigDad','sigDate','sigAge','sigInitials'].forEach(function(id){
       var el=document.getElementById(id); if(!el) return;
       var v=get(id); if(v) el.value=v;
       el.addEventListener('input',function(){ if(el.value){set(id,el.value);}else{del(id);} });
@@ -402,7 +422,7 @@
     if(rb) rb.addEventListener('click',function(){
       if(!confirm('Clear all checkboxes and signatures? (This cannot be undone.)')) return;
       checks.forEach(function(c){ del(c.getAttribute('data-k')); c.classList.remove('done'); });
-      ['sigPhoenix','sigDad','sigDate'].forEach(function(id){ del(id); var el=document.getElementById(id); if(el) el.value=''; });
+      ['sigPhoenix','sigDad','sigDate','sigAge','sigInitials'].forEach(function(id){ del(id); var el=document.getElementById(id); if(el) el.value=''; });
       refresh();
     });
     refresh();
