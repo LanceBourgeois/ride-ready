@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f7f8fa">
+<title>Road-Safety Quiz — Phoenix</title>
+<meta name="description" content="BC road-safety quiz for scooter riders — find out what you don't know yet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4f6f9; --bg2:#eaeef3; --card:#ffffff; --card2:#f7f9fb;
+    --ink:#14161b; --muted:#5a6473; --faint:#8a94a3; --line:#e2e7ee;
+    --go:#2563eb; --gosoft:#e7eefe; --goink:#1a49b8;
+    --win:#12a15f; --winsoft:#e3f7ee; --winink:#0a6f43;
+    --hot:#e0342b; --hotsoft:#fdeceb; --hotink:#a52019;
+    --shadow:0 1px 2px rgba(20,22,27,.04),0 10px 30px rgba(20,22,27,.07);
+    --radius:18px;
+  }
+  [data-theme="dark"]{
+    --bg:#0c0d11; --bg2:#141620; --card:#16181f; --card2:#1c1f28;
+    --ink:#eef1f6; --muted:#9aa3b2; --faint:#6b7484; --line:#262a35;
+    --go:#5b8def; --gosoft:#101d33; --goink:#9cbcf7;
+    --win:#2dc47e; --winsoft:#0d2c1e; --winink:#7ee0af;
+    --hot:#ff5a4f; --hotsoft:#331210; --hotink:#ff9089;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.4);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);
+    line-height:1.55;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s;padding-bottom:60px}
+  .wrap{max-width:640px;margin:0 auto;padding:0 16px}
+  h1,h2,h3{font-family:'Space Grotesk','Inter',sans-serif;letter-spacing:-.02em;line-height:1.16}
+  header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:saturate(140%) blur(12px);-webkit-backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--line)}
+  .bar{max-width:640px;margin:0 auto;padding:11px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;font-family:'Space Grotesk',sans-serif}
+  .brand .spark{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(135deg,var(--go),var(--win));color:#fff;font-size:14px}
+  .toggle{border:1px solid var(--line);background:var(--card);color:var(--ink);width:40px;height:40px;border-radius:12px;display:grid;place-items:center;cursor:pointer;font-size:17px}
+  .toggle:active{transform:scale(.92)}
+  .pad{padding-top:26px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:24px 20px}
+  .kicker{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--bg2);padding:6px 13px;border-radius:100px;margin-bottom:15px}
+  h1.big{font-size:30px;margin-bottom:11px;text-align:center}
+  .introp{color:var(--muted);font-size:15px;text-align:center;margin-bottom:8px}
+  .btnmain{display:block;width:100%;margin-top:20px;border:0;border-radius:14px;padding:16px;font:inherit;font-weight:700;
+    font-family:'Space Grotesk',sans-serif;font-size:16px;color:#fff;background:linear-gradient(135deg,var(--go),#1a49b8);cursor:pointer;transition:transform .12s}
+  .btnmain:active{transform:scale(.98)}
+  .btnmain.win{background:linear-gradient(135deg,var(--win),#0a6f43)}
+  .topline{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .qcount{font-size:12.5px;font-weight:600;color:var(--faint);text-transform:uppercase;letter-spacing:.05em}
+  .qsec{font-size:11px;font-weight:700;color:var(--go);text-transform:uppercase;letter-spacing:.06em;background:var(--gosoft);padding:3px 9px;border-radius:100px}
+  .prog{height:7px;border-radius:100px;background:var(--bg2);overflow:hidden;margin-bottom:20px}
+  .prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--go),var(--win));transition:width .35s ease}
+  .qtext{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;line-height:1.3;margin-bottom:18px}
+  .opts{display:grid;gap:10px}
+  .opt{width:100%;text-align:left;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:13px;
+    padding:14px 15px;font:inherit;font-size:14.5px;cursor:pointer;display:flex;gap:11px;align-items:center;transition:all .12s}
+  .opt:hover{border-color:var(--go)}
+  .opt .mk{flex:0 0 auto;width:22px;height:22px;border-radius:7px;border:2px solid var(--line);display:grid;place-items:center;font-size:13px;font-weight:700;color:#fff;transition:all .15s}
+  .opt.correct{border-color:var(--win);background:var(--winsoft)}
+  .opt.correct .mk{background:var(--win);border-color:var(--win)}
+  .opt.wrong{border-color:var(--hot);background:var(--hotsoft)}
+  .opt.wrong .mk{background:var(--hot);border-color:var(--hot)}
+  .opt.locked{cursor:default;pointer-events:none;opacity:.72}
+  .opt.locked.correct,.opt.locked.wrong{opacity:1}
+  .why{margin-top:16px;border-radius:13px;padding:14px 15px;font-size:14px;line-height:1.5;display:none}
+  .why.show{display:block}
+  .why.right{background:var(--winsoft);color:var(--winink);border:1px solid color-mix(in srgb,var(--win) 35%,var(--line))}
+  .why.wrongw{background:var(--hotsoft);color:var(--hotink);border:1px solid color-mix(in srgb,var(--hot) 35%,var(--line))}
+  [data-theme="dark"] .why.right{color:var(--win)} [data-theme="dark"] .why.wrongw{color:var(--hot)}
+  .why b{font-weight:700}
+  .nextwrap{margin-top:16px;display:none}.nextwrap.show{display:block}
+  /* results */
+  .scorebig{text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:52px;line-height:1;margin:6px 0 2px}
+  .scoresub{text-align:center;color:var(--muted);font-size:14px;margin-bottom:16px}
+  .verdict{border-radius:14px;padding:16px;font-size:14.5px;line-height:1.55;margin-bottom:18px}
+  .visual{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:18px}
+  .visual h3{font-size:15px;margin-bottom:4px}
+  .visual .cap{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+  .distrow{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .distrow .spd{flex:0 0 62px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px}
+  .distbar{flex:1;height:26px;background:var(--bg2);border-radius:7px;overflow:hidden;position:relative}
+  .distbar i{display:block;height:100%;border-radius:7px;background:linear-gradient(90deg,var(--go),var(--hot))}
+  .distrow .m{flex:0 0 52px;font-size:12.5px;color:var(--muted);text-align:right}
+  .recap{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 0;margin-bottom:8px}
+  .recap .r{padding:11px 15px;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--muted);display:flex;gap:10px}
+  .recap .r:last-child{border-bottom:0}.recap .r b{color:var(--ink)}
+  .backlink{display:block;text-align:center;margin-top:16px;font-size:13.5px;font-weight:600;color:var(--go);text-decoration:none}
+  footer{margin-top:30px;text-align:center;font-size:12px;color:var(--faint)}
+  a{color:var(--go)}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <div class="brand"><span class="spark">🧠</span> Road-Safety Quiz</div>
+    <button class="toggle" id="themeBtn" aria-label="Toggle light or dark mode">🌙</button>
+  </div>
+</header>
+
+<div class="wrap pad">
+
+  <div id="intro" class="card">
+    <div style="text-align:center"><span class="kicker">Before you ride 🛴</span></div>
+    <h1 class="big">How much do you actually know?</h1>
+    <p class="introp">18 quick questions on BC scooter &amp; road-safety rules — the real stuff that keeps riders alive. Most people score way lower than they expect.</p>
+    <p class="introp"><b>Bet you don't ace it.</b> Prove me wrong, Phoenix. 😏</p>
+    <button class="btnmain" id="startBtn">Start the quiz →</button>
+  </div>
+
+  <div id="quiz" class="card" style="display:none">
+    <div class="topline"><span class="qcount" id="qcount">Question 1 of 18</span><span class="qsec" id="qsec">The Law</span></div>
+    <div class="prog"><i id="progbar"></i></div>
+    <div class="qtext" id="qtext"></div>
+    <div class="opts" id="opts"></div>
+    <div class="why" id="why"></div>
+    <div class="nextwrap" id="nextwrap"><button class="btnmain" id="nextBtn">Next →</button></div>
+  </div>
+
+  <div id="result" class="card" style="display:none">
+    <div style="text-align:center"><span class="kicker" id="rkicker">Your score</span></div>
+    <div class="scorebig" id="scorebig">0/18</div>
+    <div class="scoresub" id="scoresub"></div>
+    <div class="verdict" id="verdict"></div>
+
+    <div class="visual">
+      <h3>🛑 Why 5 km/h is a big deal</h3>
+      <div class="cap">Rough distance to stop on a scooter (react + brake). Notice 45 km/h isn't 3× of 15 — it's about <b>5×</b>. Stopping distance grows with speed <b>squared</b>.</div>
+      <div class="distrow"><span class="spd">15 km/h</span><div class="distbar"><i style="width:19%"></i></div><span class="m">~6 m</span></div>
+      <div class="distrow"><span class="spd">25 km/h</span><div class="distbar"><i style="width:41%"></i></div><span class="m">~13 m</span></div>
+      <div class="distrow"><span class="spd">45 km/h</span><div class="distbar"><i style="width:100%"></i></div><span class="m">~32 m</span></div>
+    </div>
+
+    <div class="recap">
+      <div class="r"><span>⚖️</span><span><b>The law:</b> 16+ and 25 km/h on public roads — your scooter &amp; age = private property for now.</span></div>
+      <div class="r"><span>🛑</span><span><b>You can't out-brake a car.</b> A little scooter stops worse than you'd think — never dart in front of traffic.</span></div>
+      <div class="r"><span>⚡</span><span><b>Speed² rules everything.</b> A bit more speed = a lot more stopping distance and a lot more crash energy.</span></div>
+      <div class="r"><span>👀</span><span><b>Most crashes = not being seen</b> at intersections/driveways, plus solo falls. Assume you're invisible.</span></div>
+      <div class="r"><span>⛑️</span><span><b>Your head is the risk.</b> Helmet, every ride. No exceptions.</span></div>
+    </div>
+
+    <button class="btnmain win" id="retakeBtn">Take it again</button>
+    <a class="backlink" href="index.html">← Back to the Ride Ready playbook</a>
+  </div>
+
+  <footer>Made by Dad · BC road-safety basics · not a substitute for the official rules</footer>
+</div>
+
+<script>
+  (function(){
+    var root=document.documentElement, tbtn=document.getElementById('themeBtn');
+    var meta=document.querySelector('meta[name="theme-color"]'), TKEY='rr-theme';
+    function applyTheme(t){ root.setAttribute('data-theme',t); tbtn.textContent=(t==='dark')?'☀️':'🌙';
+      if(meta)meta.setAttribute('content',t==='dark'?'#0c0d11':'#f7f8fa'); }
+    var st=null; try{st=localStorage.getItem(TKEY);}catch(e){}
+    applyTheme(st==='dark'?'dark':'light');
+    tbtn.addEventListener('click',function(){ var n=root.getAttribute('data-theme')==='dark'?'light':'dark'; applyTheme(n); try{localStorage.setItem(TKEY,n);}catch(e){} });
+
+    var Q=[
+      {sec:`The Law`, q:`What's the minimum legal age to ride an electric scooter on public roads or paths in BC?`, opts:[`12`,`14`,`16`,`No minimum`], c:2, why:`It's 16 — and you're 13. So public roads and paths are off-limits for now, no matter how good you get.`},
+      {sec:`The Law`, q:`What's the maximum speed an electric scooter is allowed to go on BC public roads/paths?`, opts:[`15 km/h`,`25 km/h`,`32 km/h`,`45 km/h`], c:1, why:`25 km/h is the legal cap in BC — even though your scooter can do nearly double that.`},
+      {sec:`The Law`, q:`Your scooter does ~45 km/h with an 800W motor. On a public BC road, does it legally count as an "electric kick scooter"?`, opts:[`Yes, all scooters count`,`No — too powerful and too fast`,`Only with a licence`,`Only after dark`], c:1, why:`BC's rules are for scooters up to 500W and 25 km/h. Yours is over both — so on public roads it doesn't legally qualify at all.`},
+      {sec:`The Law`, q:`So right now, where can you legally ride your scooter?`, opts:[`Bike lanes`,`Sidewalks`,`Any road under 50 km/h`,`Private property only`], c:3, why:`Under 16 + an over-spec scooter = private property only (driveways, yards, private lots). That's the honest legal reality.`},
+
+      {sec:`Stopping`, q:`From the same speed, which usually stops in a SHORTER distance — a modern car, or your kick scooter?`, opts:[`The scooter — it's lighter`,`The car`,`Exactly the same`], c:1, why:`Surprise — the car. Big brakes, four grippy tyres, ABS. Your scooter has tiny wheels and can pitch you over if you brake hard. You can NOT out-brake a car.`},
+      {sec:`Stopping`, q:`From the same speed, which stops in a shorter distance — a car, or a big loaded truck?`, opts:[`The truck`,`The car`,`Same`], c:1, why:`The car. Heavy things take much longer to stop — never assume a truck can stop for you.`},
+      {sec:`Stopping`, q:`Which can brake harder — a motorcycle, or a kick scooter?`, opts:[`The scooter`,`The motorcycle`,`Same`], c:1, why:`The motorcycle — real tyres, real brakes. Your little scooter is near the bottom of the pile for stopping power.`},
+      {sec:`Stopping`, q:`True or false: because a scooter is so light, it stops almost instantly.`, opts:[`True`,`False`], c:1, why:`False. Small tyres = little grip, and grab the front brake too hard and you go over the bars. Light does NOT mean quick-stopping.`},
+
+      {sec:`Speed`, q:`You speed up from 20 to 25 km/h — just 5 km/h more. Your braking distance grows by about…`, opts:[`5%`,`25%`,`55%`,`It doesn't change`], c:2, why:`About 55%! Stopping distance grows with speed SQUARED — not in a straight line. A tiny bit more speed = a lot more room needed to stop.`},
+      {sec:`Speed`, q:`If you double your speed, your stopping distance roughly…`, opts:[`Doubles`,`Triples`,`Quadruples`,`Stays the same`], c:2, why:`Quadruples (2×2). Speed² again. Twice as fast needs FOUR times the room to stop — not twice.`},
+      {sec:`Speed`, q:`A crash at 45 km/h hits with about how much more energy than a crash at 25 km/h?`, opts:[`About the same`,`About 2×`,`About 3×`,`About 10×`], c:2, why:`About 3× (45² vs 25²). That's the difference between a scare and a hospital visit — all from 20 extra km/h.`},
+
+      {sec:`Awareness`, q:`The most common way a rider like you gets hit by a car is…`, opts:[`Rear-ended from behind`,`A vehicle turning across your path at an intersection or driveway`,`Hit by another scooter`,`Something falling on you`], c:1, why:`Turning vehicles at intersections and driveways. Drivers don't see you, or misjudge your speed. This is THE big one.`},
+      {sec:`Awareness`, q:`You're in a bike lane coming up to a driveway or store entrance. The biggest danger is…`, opts:[`The smooth pavement`,`A car turning in or out across the bike lane in front of you`,`Other cyclists`,`Running out of battery`], c:1, why:`A car crossing the bike lane into/out of a driveway or business. Cover your brakes and slow at every driveway — assume they'll pull across.`},
+      {sec:`Awareness`, q:`A driver waiting to turn is looking right at you. Is it safe to assume they'll wait?`, opts:[`Yes — they clearly see you`,`No — "looked but didn't register" is a top crash cause`], c:1, why:`No. Drivers look right at riders and still pull out — their brain never registered you. Make eye contact AND be ready to stop anyway.`},
+      {sec:`Awareness`, q:`A huge share of scooter injuries involve NO car at all. The usual cause?`, opts:[`Mechanical failure`,`Solo falls — potholes, curbs, wet paint, gravel catching the small wheels`,`Battery fires`,`Bad weather only`], c:1, why:`Solo falls. Those little wheels catch on potholes, curbs, wet paint and gravel and drop you fast. Scan the ground ahead, always.`},
+      {sec:`Awareness`, q:`Best way to avoid getting hit at intersections and driveways?`, opts:[`Speed up to clear it fast`,`Slow down, cover your brakes, make eye contact, assume you're invisible`,`Ring your bell and keep your speed`,`Check the map on your phone`], c:1, why:`Slow, cover the brakes, eye contact, assume invisible. Boring? Yes. It's also exactly what keeps riders alive.`},
+
+      {sec:`Protection`, q:`In a scooter crash, the injury most likely to change your life is to your…`, opts:[`Ankle`,`Wrist`,`Head`,`Elbow`], c:2, why:`Your head. That's the whole reason the helmet is non-negotiable — every ride, no "just to the driveway."`},
+      {sec:`Protection`, q:`The single most useful mindset in traffic on a scooter is…`, opts:[`"I have the right of way"`,`"Assume nobody sees me"`,`"They'll move for me"`,`"I'm fast enough to beat them"`], c:1, why:`"Assume nobody sees me." Ride like you're invisible and you leave the space that keeps you safe — worth more than any spec on the scooter.`}
+    ];
+
+    var i=0, score=0, answered=false;
+    var elIntro=document.getElementById('intro'), elQuiz=document.getElementById('quiz'), elResult=document.getElementById('result');
+    var elCount=document.getElementById('qcount'), elSec=document.getElementById('qsec'), elBar=document.getElementById('progbar');
+    var elQ=document.getElementById('qtext'), elOpts=document.getElementById('opts'), elWhy=document.getElementById('why'), elNextWrap=document.getElementById('nextwrap');
+
+    function render(){
+      answered=false;
+      var item=Q[i];
+      elCount.textContent='Question '+(i+1)+' of '+Q.length;
+      elSec.textContent=item.sec;
+      elBar.style.width=((i)/Q.length*100)+'%';
+      elQ.textContent=item.q;
+      elOpts.innerHTML='';
+      elWhy.className='why'; elWhy.innerHTML='';
+      elNextWrap.className='nextwrap';
+      item.opts.forEach(function(opt,idx){
+        var b=document.createElement('button');
+        b.className='opt';
+        b.innerHTML='<span class="mk"></span><span>'+opt+'</span>';
+        b.addEventListener('click',function(){ choose(idx,b); });
+        elOpts.appendChild(b);
+      });
+    }
+    function choose(idx,btn){
+      if(answered) return; answered=true;
+      var item=Q[i];
+      var all=elOpts.querySelectorAll('.opt');
+      all.forEach(function(b,bi){
+        b.classList.add('locked');
+        if(bi===item.c){ b.classList.add('correct'); b.querySelector('.mk').textContent='✓'; }
+      });
+      if(idx===item.c){ score++; elWhy.className='why right show'; elWhy.innerHTML='<b>✅ Correct.</b> '+item.why; }
+      else { btn.classList.add('wrong'); btn.querySelector('.mk').textContent='✕'; elWhy.className='why wrongw show'; elWhy.innerHTML='<b>❌ Not quite.</b> '+item.why; }
+      elBar.style.width=((i+1)/Q.length*100)+'%';
+      document.getElementById('nextBtn').textContent=(i===Q.length-1)?'See my score →':'Next →';
+      elNextWrap.className='nextwrap show';
+    }
+    document.getElementById('nextBtn').addEventListener('click',function(){
+      if(i<Q.length-1){ i++; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+      else { showResult(); }
+    });
+    function showResult(){
+      elQuiz.style.display='none'; elResult.style.display='block';
+      document.getElementById('scorebig').textContent=score+'/'+Q.length;
+      var pct=score/Q.length;
+      var sub=document.getElementById('scoresub'), v=document.getElementById('verdict');
+      if(pct<0.6){ document.getElementById('rkicker').textContent='Reality check';
+        sub.textContent="Yeah — that's harder than it looks.";
+        v.style.background='var(--hotsoft)'; v.style.color='var(--hotink)';
+        v.innerHTML="This is <b>exactly</b> why we do this. Most of this stuff isn't obvious — and getting it wrong out there actually hurts. Good news: now you know what you didn't know. Read it back and retake it."; }
+      else if(pct<0.85){ document.getElementById('rkicker').textContent='Not bad';
+        sub.textContent="Solid start — but the misses matter.";
+        v.style.background='var(--gosoft)'; v.style.color='var(--goink)';
+        v.innerHTML="Decent score. But the ones you missed tend to be the ones that bite hardest in real traffic. Give it another go and lock them in."; }
+      else { document.getElementById('rkicker').textContent='Respect';
+        sub.textContent="You actually get the important stuff.";
+        v.style.background='var(--winsoft)'; v.style.color='var(--winink)';
+        v.innerHTML="Strong work, Phoenix. You understand the stuff that keeps you alive out there. Now go prove it with the skills — knowing it and doing it are two different things."; }
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    document.getElementById('startBtn').addEventListener('click',function(){ elIntro.style.display='none'; elQuiz.style.display='block'; i=0; score=0; render(); });
+    document.getElementById('retakeBtn').addEventListener('click',function(){ elResult.style.display='none'; elQuiz.style.display='block'; i=0; score=0; render(); window.scrollTo({top:0,behavior:'smooth'}); });
+  })();
+</script>
+</body>
+</html>
