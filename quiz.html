@@ -109,6 +109,8 @@
   .replay:active{transform:scale(.97)}
   .videolink{display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;color:var(--go);font-weight:600;font-size:13.5px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
   .videolink:active{transform:scale(.99)}
+
+  a.btnmain{text-decoration:none;text-align:center;box-sizing:border-box;display:block}
 </style>
 </head>
 <body>
@@ -122,7 +124,7 @@
 <div class="wrap pad">
 
   <div id="intro" class="card">
-    <div style="text-align:center"><span class="kicker">Before you ride 🛴</span></div>
+    <div style="text-align:center"><span class="kicker">Step 1 · Before you ride 🛴</span></div>
     <h1 class="big">How much do you actually know?</h1>
     <p class="introp">18 quick questions on BC scooter &amp; road-safety rules — the real stuff that keeps riders alive. Most people score way lower than they expect.</p>
     <p class="introp"><b>Bet you don't ace it.</b> Prove me wrong, Phoenix. 😏</p>
@@ -166,8 +168,9 @@
       <div class="r"><span>⛑️</span><span><b>Your head is the risk.</b> Helmet, every ride. No exceptions.</span></div>
     </div>
 
-    <button class="btnmain win" id="retakeBtn">Take it again</button>
-    <a class="backlink" href="index.html">← Back to the Ride Ready playbook</a>
+    <a class="btnmain win" id="nextStep" href="index.html">Next → Gear &amp; skills</a>
+    <button class="replay" id="retakeBtn" style="margin-top:12px">↺ Retake the quiz</button>
+    <a class="backlink" href="index.html" id="homeLink">Back to the playbook</a>
   </div>
 
   <footer>Made by Dad · BC road-safety basics · not a substitute for the official rules</footer>
@@ -182,6 +185,11 @@
     var st=null; try{st=localStorage.getItem(TKEY);}catch(e){}
     applyTheme(st==='dark'?'dark':'light');
     tbtn.addEventListener('click',function(){ var n=root.getAttribute('data-theme')==='dark'?'light':'dark'; applyTheme(n); try{localStorage.setItem(TKEY,n);}catch(e){} });
+
+    var params=new URLSearchParams(location.search);
+    var backHref=(params.get('v')==='desktop')?'desktop.html':'index.html';
+    var _ns=document.getElementById('nextStep'); if(_ns) _ns.setAttribute('href',backHref);
+    var _hl=document.getElementById('homeLink'); if(_hl) _hl.setAttribute('href',backHref);
 
     var Q=[
       {sec:`The Law`, q:`What's the minimum legal age to ride an electric scooter on public roads or paths in BC?`, opts:[`12`,`14`,`16`,`No minimum`], c:2, why:`It's 16 — and you're 13. So public roads and paths are off-limits for now, no matter how good you get.`},
