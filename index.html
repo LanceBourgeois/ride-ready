@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f7f8fa">
+<title>Ride Ready — Phoenix's Playbook</title>
+<meta name="description" content="How Phoenix earns the throttle — gear, skills, and the deal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4f6f9; --bg2:#eaeef3; --card:#ffffff; --card2:#f7f9fb;
+    --ink:#14161b; --muted:#5a6473; --faint:#8a94a3; --line:#e2e7ee;
+    --go:#2563eb; --gosoft:#e7eefe; --goink:#1a49b8;
+    --win:#12a15f; --winsoft:#e3f7ee; --winink:#0a6f43;
+    --hot:#e0342b; --hotsoft:#fdeceb; --hotink:#a52019;
+    --amber:#d9822b; --ambersoft:#fdf2e4;
+    --shadow:0 1px 2px rgba(20,22,27,.04),0 8px 24px rgba(20,22,27,.06);
+    --radius:18px;
+  }
+  [data-theme="dark"]{
+    --bg:#0c0d11; --bg2:#141620; --card:#16181f; --card2:#1c1f28;
+    --ink:#eef1f6; --muted:#9aa3b2; --faint:#6b7484; --line:#262a35;
+    --go:#5b8def; --gosoft:#101d33; --goink:#9cbcf7;
+    --win:#2dc47e; --winsoft:#0d2c1e; --winink:#7ee0af;
+    --hot:#ff5a4f; --hotsoft:#331210; --hotink:#ff9089;
+    --amber:#e6a052; --ambersoft:#2e2312;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.4);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;
+    transition:background .25s ease,color .25s ease;padding-bottom:64px}
+  .wrap{max-width:680px;margin:0 auto;padding:0 16px}
+  h1,h2,h3{font-family:'Space Grotesk','Inter',sans-serif;letter-spacing:-.02em;line-height:1.15}
+  header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:saturate(140%) blur(12px);-webkit-backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--line)}
+  .bar{max-width:680px;margin:0 auto;padding:11px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;font-family:'Space Grotesk',sans-serif}
+  .brand .spark{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--go),var(--win));color:#fff;font-size:14px}
+  .toggle{border:1px solid var(--line);background:var(--card);color:var(--ink);width:40px;height:40px;
+    border-radius:12px;display:grid;place-items:center;cursor:pointer;font-size:17px;transition:transform .15s ease}
+  .toggle:active{transform:scale(.92)}
+  .hero{padding:34px 0 6px;text-align:center}
+  .kicker{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);background:var(--bg2);padding:6px 13px;border-radius:100px;margin-bottom:15px}
+  .hero h1{font-size:32px;font-weight:700;margin-bottom:11px}
+  .hero p{color:var(--muted);font-size:15.5px;max-width:480px;margin:0 auto}
+  section{margin-top:32px}
+  .h-eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
+  .sec-h{font-size:22px;font-weight:700;margin-bottom:4px}
+  .sec-sub{color:var(--muted);font-size:14.5px;margin-bottom:16px}
+  /* Trusted block */
+  .trust{margin-top:22px;border-radius:22px;padding:22px 19px;color:#fff;position:relative;overflow:hidden;
+    background:linear-gradient(150deg,var(--go),#1a49b8 70%,#12327e);box-shadow:0 14px 36px rgba(37,99,235,.3)}
+  .trust .tt{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    background:rgba(255,255,255,.2);padding:6px 12px;border-radius:100px;margin-bottom:13px}
+  .trust h2{color:#fff;font-size:23px;line-height:1.2;margin-bottom:9px}
+  .trust p{font-size:14.5px;color:rgba(255,255,255,.94);line-height:1.55}
+  .trust .deal{margin-top:14px;background:rgba(0,0,0,.16);border-radius:13px;padding:13px 14px;font-size:14.5px;
+    font-weight:600;font-family:'Space Grotesk',sans-serif;line-height:1.4}
+  .callout{border-radius:var(--radius);padding:16px;border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow)}
+  .callout h3{font-size:16.5px;font-weight:700;margin-bottom:7px;display:flex;align-items:center;gap:8px}
+  .callout p{font-size:14px;color:var(--muted)} .callout p + p{margin-top:8px}
+  .callout .big{font-size:14px;color:var(--ink)}
+  .callout.hot{background:var(--hotsoft);border-color:color-mix(in srgb,var(--hot) 40%,var(--line))}
+  /* progress bar */
+  .prog{height:7px;border-radius:100px;background:var(--bg2);overflow:hidden;margin-top:4px}
+  .prog i{display:block;height:100%;width:0;border-radius:100px;background:linear-gradient(90deg,var(--go),var(--win));transition:width .3s ease}
+  /* checklist */
+  .clcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .clhead{padding:14px 15px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line)}
+  .clhead .ct{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15.5px;display:flex;align-items:center;gap:8px}
+  .clhead .badge{font-size:12px;font-weight:700;color:var(--muted);background:var(--bg2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+  .clhead .badge.full{color:#fff;background:var(--win)}
+  .chk{width:100%;text-align:left;display:flex;gap:12px;align-items:flex-start;padding:12px 15px;border:0;
+    border-bottom:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;font:inherit;transition:background .12s}
+  .chk:last-child{border-bottom:0}
+  .chk:active{background:var(--card2)}
+  .chk .box{flex:0 0 auto;width:22px;height:22px;border-radius:7px;border:2px solid var(--line);
+    display:grid;place-items:center;font-size:13px;color:#fff;transition:all .15s;margin-top:1px}
+  .chk.done .box{background:var(--win);border-color:var(--win)}
+  .chk .box::after{content:"✓";opacity:0;transform:scale(.5);transition:all .15s}
+  .chk.done .box::after{opacity:1;transform:scale(1)}
+  .chk .lab{font-size:14px;line-height:1.45;color:var(--ink)}
+  .chk.done .lab{color:var(--faint);text-decoration:line-through}
+  .chk .lab b{font-weight:600}
+  /* level */
+  .level{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:12px;position:relative}
+  .level.complete{border-color:color-mix(in srgb,var(--win) 55%,var(--line))}
+  .lvhead{padding:15px;display:flex;gap:13px;align-items:center;border-bottom:1px solid var(--line);position:relative}
+  .lvnum{flex:0 0 auto;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;
+    font-weight:700;font-size:18px;background:var(--gosoft);color:var(--goink)}
+  .level.complete .lvnum{background:var(--win);color:#fff}
+  .lvtitle{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px}
+  .lvsub{font-size:12.5px;color:var(--muted);margin-top:1px}
+  .lvbadge{margin-left:auto;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+    padding:4px 9px;border-radius:100px;background:var(--bg2);color:var(--muted);white-space:nowrap}
+  .level.complete .lvbadge{background:var(--win);color:#fff}
+  .lvbadge.unlocked{background:var(--winsoft);color:var(--winink)}
+  .unlockmsg{padding:11px 15px;font-size:12.5px;color:var(--muted);background:var(--card2);border-top:1px solid var(--line)}
+  .unlockmsg b{color:var(--ink)}
+  .level.complete .unlockmsg{color:var(--winink)}
+  /* generic rows */
+  .rules{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  .rrow{padding:12px 15px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:flex-start}
+  .rrow:last-child{border-bottom:0}
+  .rrow .ri{font-size:19px;flex:0 0 auto;line-height:1.2}
+  .rrow .rt{font-size:13.5px;color:var(--muted);line-height:1.45}
+  .rrow .rt b{color:var(--ink);font-weight:600}
+  /* agreement */
+  .agree{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:22px;padding:20px 18px;box-shadow:var(--shadow)}
+  .agree h3{font-size:18px;margin-bottom:4px}
+  .agree .who{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--go);margin:16px 0 8px}
+  .agree .who.dad{color:var(--win)}
+  .agree ul{list-style:none;display:grid;gap:8px}
+  .agree li{position:relative;padding-left:24px;font-size:13.5px;color:var(--muted);line-height:1.45}
+  .agree li b{color:var(--ink);font-weight:600}
+  .agree li .ci{position:absolute;left:0;top:0;font-size:14px}
+  .sign{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+  .sign .sf label{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--faint);margin-bottom:5px}
+  .sign .sf input{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:11px;background:var(--card);
+    color:var(--ink);font:inherit;font-family:'Space Grotesk',sans-serif;font-weight:600}
+  .sign .sf input:focus{outline:2px solid var(--go);outline-offset:1px;border-color:var(--go)}
+  .datef{margin-top:12px}
+  .reset{margin-top:18px;text-align:center}
+  .reset button{border:1px solid var(--line);background:var(--card);color:var(--muted);font:inherit;font-size:12.5px;
+    padding:8px 16px;border-radius:100px;cursor:pointer}
+  .reset button:active{transform:scale(.97)}
+  .btn{display:flex;flex-direction:column;gap:3px;padding:15px 15px;border-radius:15px;text-decoration:none;font-weight:600;
+    border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow);transition:transform .12s ease;margin-top:6px}
+  .btn:active{transform:scale(.98)}
+  .btn .b1{font-size:11px;color:var(--faint);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+  .btn .b2{font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--go)}
+  .fineprint{font-size:11.5px;color:var(--faint);margin-top:12px;line-height:1.5}
+  footer{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);text-align:center}
+  footer .sig{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px}
+  footer p{font-size:12px;color:var(--faint);margin-top:6px}
+  a{color:var(--go)}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <div class="brand"><span class="spark">🛴</span> Ride Ready</div>
+    <button class="toggle" id="themeBtn" aria-label="Toggle light or dark mode">🌙</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <span class="kicker">Phoenix's playbook 🛴</span>
+    <h1>Earn the throttle.</h1>
+    <p>This scooter is faster and stronger than most kids your age will ever touch. That's not a warning — it's a responsibility, and it's yours to earn. Here's exactly how you do it. Tap the boxes as you go — your progress saves.</p>
+  </div>
+
+  <div class="trust">
+    <span class="tt">Real talk, Phoenix</span>
+    <h2>You're being trusted with something real.</h2>
+    <p>A machine like this is genuinely more than a 13-year-old is supposed to have — it's more powerful and faster than the law allows for your age. Your dad's not handing it over because it's a toy. He's handing it over because he believes you can rise to it. Prove him right.</p>
+    <div class="deal">The deal is simple: <b>show you can handle it → you earn more of it.</b> Skills, judgment, and respect unlock speed and freedom. Not the other way around.</div>
+  </div>
+
+  <section>
+    <div class="callout hot">
+      <h3>🚫 The non-negotiables (these never change)</h3>
+      <p class="big">These aren't earned or unlocked — they're always on, from ride one, no exceptions:</p>
+      <div class="rules" style="margin-top:12px">
+        <div class="rrow"><span class="ri">⛑️</span><span class="rt"><b>Helmet, every single ride.</b> No "just to the driveway." Every time.</span></div>
+        <div class="rrow"><span class="ri">🅿️</span><span class="rt"><b>Private property only, for now.</b> You're 13 and this scooter is over the legal limit — so driveways, yards, private lots, not public roads or paths.</span></div>
+        <div class="rrow"><span class="ri">👤</span><span class="rt"><b>One rider. Never a passenger.</b> These aren't built for two, ever.</span></div>
+        <div class="rrow"><span class="ri">📵</span><span class="rt"><b>Phone away while riding.</b> Both hands, eyes up.</span></div>
+        <div class="rrow"><span class="ri">📍</span><span class="rt"><b>Always tell someone</b> where you're riding and take a charged phone.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="h-eyebrow">Step 1 — before you roll</div>
+    <h2 class="sec-h">🧰 Gear check</h2>
+    <p class="sec-sub">Speed + pavement = you need armour. Tick each off before you ride.</p>
+    <div class="clcard">
+      <div class="clhead">
+        <div class="ct">🛡️ Your gear</div>
+        <div class="badge" data-count="gear">0/6</div>
+      </div>
+      <button class="chk" data-k="g1"><span class="box"></span><span class="lab"><b>Helmet</b> — full-face / chin-bar is best at speed (protects your jaw, not just your skull)</span></button>
+      <button class="chk" data-k="g2"><span class="box"></span><span class="lab"><b>Gloves</b> — your hands hit the ground first, every time</span></button>
+      <button class="chk" data-k="g3"><span class="box"></span><span class="lab"><b>Knee &amp; elbow pads</b> — cheap insurance against the most common scrapes</span></button>
+      <button class="chk" data-k="g4"><span class="box"></span><span class="lab"><b>Closed shoes</b> — laced up. Never sandals or bare feet</span></button>
+      <button class="chk" data-k="g5"><span class="box"></span><span class="lab"><b>Be visible</b> — bright/light colours, and lights on if it's getting dark</span></button>
+      <button class="chk" data-k="g6"><span class="box"></span><span class="lab"><b>Scooter check</b> — brakes work, tires OK, nothing loose, battery charged</span></button>
+    </div>
+  </section>
+
+  <section>
+    <div class="h-eyebrow">Step 2 — the trust ladder</div>
+    <h2 class="sec-h">🪜 Level up to unlock speed</h2>
+    <p class="sec-sub">Do NOT skip levels. Master every box in a level before you touch the next — that's how you earn the throttle (and Dad's trust).</p>
+
+    <div class="level" data-level="l1">
+      <div class="lvhead">
+        <div class="lvnum">1</div>
+        <div><div class="lvtitle">Get a feel for it</div><div class="lvsub">Empty flat lot · lowest speed mode</div></div>
+        <div class="lvbadge" data-badge="l1">0/5</div>
+      </div>
+      <button class="chk" data-k="l1a"><span class="box"></span><span class="lab">Find a big, <b>empty, flat</b> private space with no traffic and no people</span></button>
+      <button class="chk" data-k="l1b"><span class="box"></span><span class="lab">Set the scooter to its <b>lowest speed mode</b> — leave it there</span></button>
+      <button class="chk" data-k="l1c"><span class="box"></span><span class="lab"><b>Balance and glide</b> — get comfortable just standing and rolling</span></button>
+      <button class="chk" data-k="l1d"><span class="box"></span><span class="lab"><b>Feather the throttle</b> — smooth starts, no jerky launches</span></button>
+      <button class="chk" data-k="l1e"><span class="box"></span><span class="lab"><b>Gentle stops</b> — roll to a controlled halt, foot down, every time</span></button>
+      <div class="unlockmsg" data-msg="l1"><b>Unlock Level 2</b> once all 5 feel easy and automatic.</div>
+    </div>
+
+    <div class="level" data-level="l2">
+      <div class="lvhead">
+        <div class="lvnum">2</div>
+        <div><div class="lvtitle">Own your brakes</div><div class="lvsub">Stopping is the #1 skill — master it</div></div>
+        <div class="lvbadge" data-badge="l2">0/4</div>
+      </div>
+      <button class="chk" data-k="l2a"><span class="box"></span><span class="lab"><b>Controlled braking</b> from a roll — squeeze smooth, don't grab</span></button>
+      <button class="chk" data-k="l2b"><span class="box"></span><span class="lab"><b>Emergency stop drill</b> — practice stopping FAST and straight on command</span></button>
+      <button class="chk" data-k="l2c"><span class="box"></span><span class="lab"><b>Start–stop reps</b> — go, stop, go, stop until it's second nature</span></button>
+      <button class="chk" data-k="l2d"><span class="box"></span><span class="lab"><b>Look where you're going</b> — eyes up and ahead, not at your feet</span></button>
+      <div class="unlockmsg" data-msg="l2"><b>Unlock Level 3</b> once you can stop hard, straight, and predictably — every time.</div>
+    </div>
+
+    <div class="level" data-level="l3">
+      <div class="lvhead">
+        <div class="lvnum">3</div>
+        <div><div class="lvtitle">Control &amp; confidence</div><div class="lvsub">Still lower modes · still private property</div></div>
+        <div class="lvbadge" data-badge="l3">0/4</div>
+      </div>
+      <button class="chk" data-k="l3a"><span class="box"></span><span class="lab"><b>Smooth cornering</b> — lean gently, look through the turn, don't oversteer</span></button>
+      <button class="chk" data-k="l3b"><span class="box"></span><span class="lab"><b>Dodge an obstacle</b> — set up a cone/bottle and steer around it in control</span></button>
+      <button class="chk" data-k="l3c"><span class="box"></span><span class="lab"><b>Ride a marked course</b> — a little loop with turns and a stop line</span></button>
+      <button class="chk" data-k="l3d"><span class="box"></span><span class="lab"><b>One-hand steady</b> — briefly, so you could signal (practice both hands)</span></button>
+      <div class="unlockmsg" data-msg="l3"><b>Unlock Level 4</b> once you're smooth, steady, and never surprised by the scooter.</div>
+    </div>
+
+    <div class="level" data-level="l4">
+      <div class="lvhead">
+        <div class="lvnum">4</div>
+        <div><div class="lvtitle">Open it up — smart</div><div class="lvsub">Step up speed only when everything below is locked in</div></div>
+        <div class="lvbadge" data-badge="l4">0/4</div>
+      </div>
+      <button class="chk" data-k="l4a"><span class="box"></span><span class="lab"><b>Step up ONE speed mode</b> — and re-do your braking drill at the new speed</span></button>
+      <button class="chk" data-k="l4b"><span class="box"></span><span class="lab"><b>Respect the power</b> — more speed = way longer stopping distance. Leave room</span></button>
+      <button class="chk" data-k="l4c"><span class="box"></span><span class="lab"><b>Know your limits</b> — tired, dark, wet, or crowded? Slow down or stop</span></button>
+      <button class="chk" data-k="l4d"><span class="box"></span><span class="lab"><b>Still private property</b> — full speed lives here until you're 16 and legal</span></button>
+      <div class="unlockmsg" data-msg="l4"><b>Nailed it.</b> You've earned the machine. Keep the habits — they're what keep you safe.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="h-eyebrow">Just in case</div>
+    <h2 class="sec-h">🆘 If something goes wrong</h2>
+    <div class="rules">
+      <div class="rrow"><span class="ri">🛑</span><span class="rt"><b>Feels wobbly or too fast?</b> Ease off the throttle, brake smooth, coast down. Don't panic-grab.</span></div>
+      <div class="rrow"><span class="ri">⚡</span><span class="rt"><b>Something feels off (brakes, power, noise)?</b> Stop riding. Tell Dad. Don't "ride it out."</span></div>
+      <div class="rrow"><span class="ri">🔋</span><span class="rt"><b>Charging:</b> only with the right charger, never overnight unattended, never a hot or damaged battery.</span></div>
+      <div class="rrow"><span class="ri">🚑</span><span class="rt"><b>Crash:</b> get out of the way first, then check yourself. Head hit? Tell an adult even if you feel fine.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="h-eyebrow">Step 3 — make it official</div>
+    <h2 class="sec-h">🤝 The agreement</h2>
+    <p class="sec-sub">This is the deal between you and Dad. Read it together, then sign.</p>
+    <div class="agree">
+      <h3>The Ride-Ready Agreement</h3>
+      <div class="who">Phoenix, I promise to…</div>
+      <ul>
+        <li><span class="ci">✅</span>Wear my <b>helmet and gear every ride</b> — no exceptions</li>
+        <li><span class="ci">✅</span>Keep it to <b>private property</b> until I'm 16 and legal</li>
+        <li><span class="ci">✅</span><b>Earn my speed</b> — master each level before going faster</li>
+        <li><span class="ci">✅</span>Never carry a passenger, never ride distracted</li>
+        <li><span class="ci">✅</span><b>Tell the truth</b> about where and how I ride</li>
+      </ul>
+      <div class="who dad">Dad, I promise to…</div>
+      <ul>
+        <li><span class="ci">🤝</span><b>Trust you more</b> as you show me you've got this</li>
+        <li><span class="ci">🤝</span>Give you room to learn — and the gear to do it safely</li>
+        <li><span class="ci">🤝</span>Be straight with you, not just say "no"</li>
+      </ul>
+      <div class="sign">
+        <div class="sf"><label>Phoenix</label><input id="sigPhoenix" type="text" placeholder="Sign here" autocomplete="off"></div>
+        <div class="sf"><label>Dad</label><input id="sigDad" type="text" placeholder="Sign here" autocomplete="off"></div>
+      </div>
+      <div class="datef sf"><label style="display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--faint);margin-bottom:5px">Date</label><input id="sigDate" type="text" placeholder="Today's date" autocomplete="off" style="width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:11px;background:var(--card);color:var(--ink);font:inherit;font-family:'Space Grotesk',sans-serif;font-weight:600"></div>
+      <div class="reset"><button id="resetBtn">Reset all my progress</button></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="h-eyebrow">Know the law too</div>
+    <h2 class="sec-h">📋 The BC rules</h2>
+    <p class="sec-sub">When you're 16, this is what "legal on the street" looks like.</p>
+    <a class="btn" href="https://lancebourgeois.github.io/bc-scooter-rules/" target="_blank" rel="noopener">
+      <span class="b1">Your guide</span><span class="b2">BC E-Scooter Rules →</span>
+    </a>
+    <a class="btn" href="https://www2.gov.bc.ca/gov/content/transportation/driving-and-cycling/cycling/electric-kick-scooter-rules" target="_blank" rel="noopener">
+      <span class="b1">Official</span><span class="b2">gov.bc.ca rules →</span>
+    </a>
+  </section>
+
+  <footer>
+    <div class="sig">You've got this, Phoenix 🛴⚡</div>
+    <p>Made by Dad. The habits you build now are the ones that keep you safe for life. Respect the machine, and it's all yours.</p>
+    <p style="margin-top:10px">Helmet on. Earn the throttle. Ride smart. — Dad</p>
+  </footer>
+
+</div>
+
+<script>
+  (function(){
+    var root=document.documentElement, btn=document.getElementById('themeBtn');
+    var meta=document.querySelector('meta[name="theme-color"]'), TKEY='rr-theme';
+    function applyTheme(t){
+      root.setAttribute('data-theme',t);
+      btn.textContent=(t==='dark')?'☀️':'🌙';
+      btn.setAttribute('aria-label',t==='dark'?'Switch to light mode':'Switch to dark mode');
+      if(meta)meta.setAttribute('content',t==='dark'?'#0c0d11':'#f7f8fa');
+    }
+    var savedT=null; try{savedT=localStorage.getItem(TKEY);}catch(e){}
+    applyTheme(savedT==='dark'?'dark':'light');
+    btn.addEventListener('click',function(){
+      var n=root.getAttribute('data-theme')==='dark'?'light':'dark';
+      applyTheme(n); try{localStorage.setItem(TKEY,n);}catch(e){}
+    });
+
+    function get(k){try{return localStorage.getItem('rr:'+k);}catch(e){return null;}}
+    function set(k,v){try{localStorage.setItem('rr:'+k,v);}catch(e){}}
+    function del(k){try{localStorage.removeItem('rr:'+k);}catch(e){}}
+
+    var checks=Array.prototype.slice.call(document.querySelectorAll('.chk'));
+    // restore
+    checks.forEach(function(c){ if(get(c.getAttribute('data-k'))==='1') c.classList.add('done'); });
+
+    function pct(el,done,total){ /* progress helper if needed */ }
+
+    function refresh(){
+      // gear badge
+      updateGroup('gear', ['g1','g2','g3','g4','g5','g6']);
+      // levels
+      updateLevel('l1', ['l1a','l1b','l1c','l1d','l1e']);
+      updateLevel('l2', ['l2a','l2b','l2c','l2d']);
+      updateLevel('l3', ['l3a','l3b','l3c','l3d']);
+      updateLevel('l4', ['l4a','l4b','l4c','l4d']);
+    }
+    function countDone(keys){ var n=0; keys.forEach(function(k){ if(get(k)==='1') n++; }); return n; }
+    function updateGroup(name, keys){
+      var d=countDone(keys), t=keys.length;
+      var b=document.querySelector('[data-count="'+name+'"]');
+      if(b){ b.textContent=d+'/'+t; b.classList.toggle('full', d===t); }
+    }
+    function updateLevel(name, keys){
+      var d=countDone(keys), t=keys.length;
+      var badge=document.querySelector('[data-badge="'+name+'"]');
+      var lvl=document.querySelector('[data-level="'+name+'"]');
+      if(badge){ badge.textContent = (d===t)? 'Complete ✓' : d+'/'+t; }
+      if(lvl){ lvl.classList.toggle('complete', d===t); }
+    }
+
+    checks.forEach(function(c){
+      c.addEventListener('click',function(){
+        var k=c.getAttribute('data-k');
+        if(c.classList.toggle('done')){ set(k,'1'); } else { del(k); }
+        refresh();
+      });
+    });
+
+    // signature + date persistence
+    ['sigPhoenix','sigDad','sigDate'].forEach(function(id){
+      var el=document.getElementById(id); if(!el) return;
+      var v=get(id); if(v) el.value=v;
+      el.addEventListener('input',function(){ if(el.value){set(id,el.value);}else{del(id);} });
+    });
+
+    // reset
+    var rb=document.getElementById('resetBtn');
+    if(rb) rb.addEventListener('click',function(){
+      if(!confirm('Clear all checkboxes and signatures? (This can't be undone.)')) return;
+      checks.forEach(function(c){ del(c.getAttribute('data-k')); c.classList.remove('done'); });
+      ['sigPhoenix','sigDad','sigDate'].forEach(function(id){ del(id); var el=document.getElementById(id); if(el) el.value=''; });
+      refresh();
+    });
+
+    refresh();
+  })();
+</script>
+</body>
+</html>
