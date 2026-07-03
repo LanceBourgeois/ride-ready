@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f7f8fa">
+<title>Speed vs Stopping Distance — Scooter</title>
+<meta name="description" content="Why a little more speed needs a lot more room to stop — for e-scooter riders.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f4f6f9;--bg2:#eaeef3;--card:#ffffff;--card2:#f7f9fb;--ink:#14161b;--muted:#5a6473;--faint:#8a94a3;--line:#e2e7ee;
+    --go:#2563eb;--gosoft:#e7eefe;--goink:#1a49b8;--win:#12a15f;--hot:#e0342b;--hotsoft:#fdeceb;--hotink:#a52019;
+    --shadow:0 1px 2px rgba(20,22,27,.04),0 10px 30px rgba(20,22,27,.07);--radius:18px}
+  [data-theme="dark"]{--bg:#0c0d11;--bg2:#141620;--card:#16181f;--card2:#1c1f28;--ink:#eef1f6;--muted:#9aa3b2;--faint:#6b7484;--line:#262a35;
+    --go:#5b8def;--gosoft:#101d33;--goink:#9cbcf7;--win:#2dc47e;--hot:#ff5a4f;--hotsoft:#331210;--hotink:#ff9089;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.4)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);
+    line-height:1.55;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s;padding-bottom:56px}
+  .wrap{max-width:600px;margin:0 auto;padding:0 16px}
+  h1,h2{font-family:'Space Grotesk','Inter',sans-serif;letter-spacing:-.02em;line-height:1.16}
+  header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(140%) blur(12px);
+    -webkit-backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--line)}
+  .bar{max-width:600px;margin:0 auto;padding:11px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;font-family:'Space Grotesk',sans-serif}
+  .brand .spark{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(135deg,var(--go),var(--hot));color:#fff;font-size:14px}
+  .toggle{border:1px solid var(--line);background:var(--card);color:var(--ink);width:40px;height:40px;border-radius:12px;display:grid;place-items:center;cursor:pointer;font-size:17px}
+  .hero{padding:32px 0 4px;text-align:center}
+  .kicker{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--bg2);padding:6px 13px;border-radius:100px;margin-bottom:14px}
+  h1.big{font-size:29px;margin-bottom:11px}
+  .hero p{color:var(--muted);font-size:15px;max-width:460px;margin:0 auto}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 16px;margin-top:22px}
+  .cap{font-size:13.5px;color:var(--muted);margin-bottom:14px;text-align:center;line-height:1.5}
+  .scene{position:relative;background:var(--bg2);border-radius:12px;padding:14px 12px 10px;overflow:hidden}
+  .crosswalk{position:absolute;top:6px;bottom:6px;left:45%;width:0;border-left:2px dashed color-mix(in srgb,var(--hot) 65%,var(--line));z-index:1}
+  .crosswalk .cwicon{position:absolute;top:-4px;left:-10px;font-size:15px}
+  .lane{display:flex;align-items:center;gap:9px;margin:10px 0;position:relative;z-index:2}
+  .lane .lspd{flex:0 0 56px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px}
+  .lane .track{flex:1;height:22px;position:relative}
+  .lane .rider{position:absolute;left:0;top:0;font-size:18px;line-height:22px}
+  .scene.go .rider{transition:left 1.9s cubic-bezier(.12,.7,.25,1)}
+  .lane .ldist{flex:0 0 46px;font-size:11.5px;color:var(--muted);text-align:right;font-weight:600}
+  .scenenote{font-size:13px;color:var(--muted);min-height:36px;margin:6px 2px 12px;text-align:center;line-height:1.45}
+  .scenenote b{color:var(--ink)}
+  .replay{border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:13px;font-weight:600;padding:9px 18px;border-radius:100px;cursor:pointer;display:block;margin:0 auto 14px}
+  .replay:active{transform:scale(.97)}
+  .facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:2px}
+  .fact{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:13px;text-align:center}
+  .fact .fn{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:var(--hotink)}
+  [data-theme="dark"] .fact .fn{color:var(--hot)}
+  .fact .fl{font-size:12px;color:var(--muted);margin-top:3px}
+  .videolink{display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;color:var(--go);font-weight:600;font-size:14px;padding:14px;border:1px solid var(--line);border-radius:13px;background:var(--card);box-shadow:var(--shadow);margin-top:16px}
+  .videolink:active{transform:scale(.99)}
+  footer{margin-top:26px;text-align:center;font-size:12px;color:var(--faint);line-height:1.5}
+  a{color:var(--go)}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <div class="brand"><span class="spark">⚡</span> Speed &amp; Stopping</div>
+    <button class="toggle" id="themeBtn" aria-label="Toggle light or dark mode">🌙</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <span class="kicker">Scooter physics 🛴</span>
+    <h1 class="big">Your scooter can't stop as fast as you think.</h1>
+    <p>Three riders on the same scooter hit the brakes at the exact same line. The only difference is speed — watch what happens.</p>
+  </div>
+
+  <div class="card">
+    <div class="cap">🚸 = where someone is standing. Same brakes for everyone; only the speed changes.</div>
+    <div class="scene" id="scene">
+      <div class="crosswalk"><span class="cwicon">🚸</span></div>
+      <div class="lane"><span class="lspd">15 km/h</span><div class="track"><span class="rider" data-stop="18">🛴</span></div><span class="ldist">~6 m</span></div>
+      <div class="lane"><span class="lspd">25 km/h</span><div class="track"><span class="rider" data-stop="40">🛴</span></div><span class="ldist">~13 m</span></div>
+      <div class="lane"><span class="lspd">45 km/h</span><div class="track"><span class="rider" data-stop="92">🛴</span></div><span class="ldist">~32 m</span></div>
+    </div>
+    <div class="scenenote" id="scenenote"></div>
+    <button class="replay" id="replayBtn">▶ Replay</button>
+    <div class="facts">
+      <div class="fact"><div class="fn">+5 km/h</div><div class="fl">20→25 = ~55% MORE stopping distance</div></div>
+      <div class="fact"><div class="fn">2× speed</div><div class="fl">= ~4× the distance to stop</div></div>
+    </div>
+    <a class="videolink" href="https://www.youtube.com/watch?v=HTANxqGQcfI" target="_blank" rel="noopener">📺 Watch: Stopping Distance explained — FuseSchool (4 min)</a>
+  </div>
+
+  <footer>Stopping distance grows with speed <b>squared</b> — a little more speed needs a LOT more room to stop.<br>Distances are rough, for a scooter (reaction + braking). Ride like you can't stop on a dime — because you can't.</footer>
+</div>
+
+<script>
+  (function(){
+    var root=document.documentElement, tbtn=document.getElementById('themeBtn');
+    var meta=document.querySelector('meta[name="theme-color"]'), TKEY='rr-theme';
+    function applyTheme(t){ root.setAttribute('data-theme',t); tbtn.textContent=(t==='dark')?'☀️':'🌙';
+      if(meta)meta.setAttribute('content',t==='dark'?'#0c0d11':'#f7f8fa'); }
+    var st=null; try{st=localStorage.getItem(TKEY);}catch(e){}
+    applyTheme(st==='dark'?'dark':'light');
+    tbtn.addEventListener('click',function(){ var n=root.getAttribute('data-theme')==='dark'?'light':'dark'; applyTheme(n); try{localStorage.setItem(TKEY,n);}catch(e){} });
+
+    var scene=document.getElementById('scene');
+    var riders=scene.querySelectorAll('.rider'), note=document.getElementById('scenenote');
+    function run(){
+      note.innerHTML='';
+      scene.classList.remove('go');
+      riders.forEach(function(r){ r.style.left='0%'; });
+      void scene.offsetWidth;
+      scene.classList.add('go');
+      riders.forEach(function(r){ r.style.left=r.getAttribute('data-stop')+'%'; });
+      setTimeout(function(){ note.innerHTML='✅ 15 &amp; 25 km/h stop before the crossing. 💥 <b>45 km/h blows right through it.</b> Same scooter, same brakes — speed² is the difference.'; }, 2050);
+    }
+    document.getElementById('replayBtn').addEventListener('click',run);
+    setTimeout(run, 500);
+  })();
+</script>
+</body>
+</html>
