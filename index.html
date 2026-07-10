@@ -180,6 +180,21 @@
   .replay{border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:12.5px;font-weight:600;padding:8px 16px;border-radius:100px;cursor:pointer;display:block;margin:0 auto 12px}
   .replay:active{transform:scale(.97)}
   .videolink{display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;color:var(--go);font-weight:600;font-size:13.5px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+
+  /* "See the future" prediction game */
+  .pgame{margin-top:14px}
+  .pgame-h{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;margin-bottom:11px}
+  .pgame-h span{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:12.5px;color:var(--muted);margin-top:2px}
+  .pcards{display:grid;gap:10px}
+  .pcard{width:100%;text-align:left;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:14px 15px;font:inherit;cursor:pointer;box-shadow:var(--shadow);transition:border-color .15s}
+  .pcard:hover{border-color:var(--go)}
+  .pcard .pq{font-size:14.5px;color:var(--ink);font-weight:600;display:flex;gap:9px;align-items:flex-start}
+  .pcard .pi{flex:0 0 auto;font-size:17px;line-height:1.3}
+  .pcard .ptap{font-size:11.5px;font-weight:700;color:var(--go);text-transform:uppercase;letter-spacing:.04em;margin-top:9px}
+  .pcard.revealed .ptap{display:none}
+  .pcard .pa{font-size:13.5px;color:var(--muted);line-height:1.5;max-height:0;overflow:hidden;opacity:0;transition:max-height .3s ease,opacity .25s ease}
+  .pcard.revealed .pa{max-height:240px;opacity:1;margin-top:11px;padding-top:11px;border-top:1px dashed var(--line)}
+  .pcard .pa b{color:var(--ink);font-weight:700}
 </style>
 </head>
 <body>
@@ -312,6 +327,75 @@
       <p class="big">Ride with your knees <b>slightly bent and loose</b> — never stiff or locked. Your legs work exactly like the <b>shocks on a car</b>: they soak up the bumps and dips so you stay smooth and balanced.</p>
       <p>This matters most <b>at speed</b>: hit a bump or dip you didn't see with straight, stiff legs and the jolt slams straight into you — it can bounce you off balance, or clean off the scooter. Bent knees absorb the hit. <b>Stay loose, stay low, stay on.</b></p>
     </div>
+  </section>
+
+  <section>
+    <div class="h-eyebrow">The skill that matters most</div>
+    <h2 class="sec-h">🔮 See the future</h2>
+    <p class="sec-sub">Here's the real elephant in the room, Phoenix — and honestly the closest thing to a superpower you'll ever get. The best riders don't <em>react</em> to danger. They <b>see it coming</b> seconds before it happens, and they're already out of the way. It's not magic — it's reading people.</p>
+    <div class="callout">
+      <p class="big">Cars, people, dogs, doors, blinkers, brake lights — they all give tiny tells a second or two <b>before</b> they move. Learn to read them and you can basically predict what's about to happen. A driver not looking at you? They don't see you — period. A car creeping at a driveway? It's coming out. Once you see it, you see it <em>everywhere</em>.</p>
+    </div>
+
+    <div class="pgame">
+      <div class="pgame-h">🕹️ Can you see it coming?<span>Read each one, guess what happens next — then tap to see what a pro predicts.</span></div>
+      <div class="pcards">
+      <button class="pcard" type="button">
+        <div class="pq"><span class="pi">🚗</span><span>A car ahead pulls over and parks.</span></div>
+        <div class="ptap">🔮 Tap to predict →</div>
+        <div class="pa"><b>A door's about to swing open</b> — or someone steps out without looking for you. Slow down and leave a full car-door of space.</div>
+      </button>
+      <button class="pcard" type="button">
+        <div class="pq"><span class="pi">🚗</span><span>A car behind you flicks on its right blinker — and a driveway or side street is coming up.</span></div>
+        <div class="ptap">🔮 Tap to predict →</div>
+        <div class="pa"><b>It's turning right, across your path</b> — and it probably hasn't factored you in at all. Cover your brakes; never sit on a car's right side near a turn.</div>
+      </button>
+      <button class="pcard" type="button">
+        <div class="pq"><span class="pi">🅿️</span><span>A car is waiting to pull out of a side street or driveway.</span></div>
+        <div class="ptap">🔮 Tap to predict →</div>
+        <div class="pa"><b>Watch its front wheel and the driver's eyes.</b> Wheel creeping, or looking the other way? They're coming out — assume it and be ready to stop.</div>
+      </button>
+      <button class="pcard" type="button">
+        <div class="pq"><span class="pi">🧍</span><span>Someone walks up to a parked car with keys in hand.</span></div>
+        <div class="ptap">🔮 Tap to predict →</div>
+        <div class="pa"><b>That door is about to open</b> into your path. Give it room right now, before it moves.</div>
+      </button>
+      <button class="pcard" type="button">
+        <div class="pq"><span class="pi">⚽</span><span>A ball bounces into the street.</span></div>
+        <div class="ptap">🔮 Tap to predict →</div>
+        <div class="pa"><b>A kid is about to chase it</b> without looking — a dog works the same way. Slow way down and expect the runner you can't see yet.</div>
+      </button>
+      <button class="pcard" type="button">
+        <div class="pq"><span class="pi">🚦</span><span>The light ahead has been green a long time.</span></div>
+        <div class="ptap">🔮 Tap to predict →</div>
+        <div class="pa">It's a <b>"stale" green — about to turn yellow.</b> Get ready to stop, and watch for someone flooring it to beat the red.</div>
+      </button>
+      <button class="pcard" type="button">
+        <div class="pq"><span class="pi">🚗</span><span>Brake lights flash two or three cars ahead.</span></div>
+        <div class="ptap">🔮 Tap to predict →</div>
+        <div class="pa"><b>Traffic is stopping before you can even see why.</b> Start easing off now — don't wait for the car right in front of you to react.</div>
+      </button>
+      <button class="pcard" type="button">
+        <div class="pq"><span class="pi">🙈</span><span>A driver's head is down, turned away, or on a phone.</span></div>
+        <div class="ptap">🔮 Tap to predict →</div>
+        <div class="pa"><b>Assume they don't see you at all.</b> Have an escape route picked out before you need it.</div>
+      </button>
+      </div>
+    </div>
+
+    <div class="callout warn" style="margin-top:14px">
+      <h3>🔁 Never stop scanning</h3>
+      <p class="big">Seeing the future isn't one look — it's <b>always</b> looking:</p>
+      <ul class="clean" style="margin-top:12px">
+        <li><span class="ci">🔭</span><b>Look far, then near, then everything between.</b> As far down the road as you can see (~10–15 seconds ahead), then right at your front wheel, then all the space in the middle.</li>
+        <li><span class="ci">🔁</span><b>Don't look once — keep sweeping.</b> The scene changes every second; what was clear two seconds ago might not be now.</li>
+        <li><span class="ci">👀</span><b>Notice what MOVED</b> since your last look — a car that was still, a head that turned, a door that cracked open.</li>
+        <li><span class="ci">🧠</span><b>Read people, not just cars.</b> Where are they looking? Are they about to move? Humans are predictable if you watch them.</li>
+        <li><span class="ci">🙈</span><b>Golden rule: assume nobody sees you.</b> Ride like you're invisible and always leave yourself an out.</li>
+      </ul>
+    </div>
+
+    <a class="videolink" href="https://youtu.be/dOXZRpet1oM" target="_blank" rel="noopener" style="margin-top:14px">📺 Watch: How to Scan Intersections Like a Safe Driver (16 min)</a>
   </section>
 
   <section>
@@ -516,6 +600,13 @@
       },{threshold:0.4});
       io.observe(scene);
     } else { run(); }
+  })();
+</script>
+<script>
+  (function(){
+    document.querySelectorAll('.pcard').forEach(function(c){
+      c.addEventListener('click',function(){ c.classList.toggle('revealed'); });
+    });
   })();
 </script>
 </body>
